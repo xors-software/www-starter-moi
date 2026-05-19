@@ -1,0 +1,24 @@
+{
+	"name": "contracts",
+	"description": "MOI Protocol LOGIC contracts (Cocolang) and deploy scripts.",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"compile": "cd coco && coco compile",
+		"deploy": "bun run scripts/deploy.ts",
+		"invoke": "bun run scripts/invoke.ts",
+		"type-check": "tsc --pretty --noEmit",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint --write --unsafe .",
+		"format": "biome format .",
+		"format:fix": "biome format --write ."
+	},
+	"dependencies": {
+		"js-moi-sdk": "0.6.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.15",
+		"@types/bun": "latest",
+		"typescript": "^5.9.3"
+	}
+}

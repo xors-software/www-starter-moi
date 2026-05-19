@@ -1,6 +1,6 @@
 {
 	"name": "web",
-	"description": "Next.js frontend for XORS projects.",
+	"description": "Next.js frontend for MOI Protocol dApps.",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
@@ -24,6 +24,7 @@
 		"@tanstack/react-query": "^5.100.10",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"js-moi-sdk": "0.6.0",
 		"lodash": "^4.18.1",
 		"next": "^16.2.6",
 		"react": "^19.2.6",

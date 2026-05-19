@@ -1,0 +1,54 @@
+// A simple LOGIC with an internal boolean state that can be retrieved and flipped.
+// Adapted from sarvalabs/js-moi-examples/Flipper.
+//
+// Compile with the Coco CLI (see contracts/README.md):
+//   cd contracts/coco && coco compile
+//
+// The pre-compiled Flipper.json manifest in this directory is committed so the
+// starter is usable end-to-end without installing the Coco toolchain first.
+
+////////////////////////
+// Module Name
+///////////////////////
+coco Flipper
+
+////////////////////////
+// Persistent State
+///////////////////////
+state persistent:
+    value Bool
+
+////////////////////////
+// Deploy Endpoints
+///////////////////////
+
+// Default deployer — leaves persistent state at its zero value.
+endpoint deployer Init!():
+    pass
+
+// Seeded deployer — initialises the persistent state to `initial`.
+// This is the constructor the starter's deploy script invokes by default.
+endpoint deployer Seed!(initial Bool):
+    set!(value: initial)
+
+////////////////////////
+// Internal Functions
+///////////////////////
+
+func set!(value Bool):
+    mutate value -> Flipper.State.value
+
+////////////////////////
+// Mutate Endpoints
+///////////////////////
+
+endpoint invokable Flip!():
+    mutate value <- Flipper.State.value:
+        value = !value
+
+////////////////////////
+// Read Endpoints
+///////////////////////
+
+endpoint invokable Get() -> (value Bool):
+    observe value <- Flipper.State.value
